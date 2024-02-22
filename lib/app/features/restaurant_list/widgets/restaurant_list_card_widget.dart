@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:restaurant_app/app/constant/color.dart';
+import 'package:restaurant_app/app/data/models/restaurant_list_model.dart';
+import '../../../routes/app_routes.dart';
 
-import '../../data/models/restaurant_model.dart';
-import '../../routes/app_routes.dart';
-
-Widget restaurantListCard(BuildContext context, Restaurant restaurant) {
+Widget restaurantListCard(
+    BuildContext context, RestaurantListModel restaurant) {
   return Card(
     color: Colors.white70,
     shadowColor: Colors.black.withOpacity(0.8),
@@ -15,7 +15,7 @@ Widget restaurantListCard(BuildContext context, Restaurant restaurant) {
       splashColor: Colors.blue.withAlpha(30),
       onTap: () {
         Navigator.pushNamed(context, Routes.RESTAURANT_DETAIL,
-            arguments: restaurant);
+            arguments: restaurant.id);
       },
       child: SizedBox(
         height: 120,
@@ -32,7 +32,7 @@ Widget restaurantListCard(BuildContext context, Restaurant restaurant) {
               decoration: ShapeDecoration(
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(restaurant.pictureId),
+                    image: NetworkImage(restaurant.pictureId!),
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
@@ -45,7 +45,7 @@ Widget restaurantListCard(BuildContext context, Restaurant restaurant) {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    restaurant.name,
+                    restaurant.name!,
                     style: Theme.of(context).textTheme.labelLarge,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -61,7 +61,7 @@ Widget restaurantListCard(BuildContext context, Restaurant restaurant) {
                         width: 5,
                       ),
                       Text(
-                        restaurant.city,
+                        restaurant.city!,
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],

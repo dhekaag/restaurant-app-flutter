@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/app/data/models/restaurant_model.dart';
+import 'package:restaurant_app/app/data/models/restaurant_detail_model.dart';
 
 class RestaurantDescription extends StatelessWidget {
   const RestaurantDescription({
@@ -9,7 +9,7 @@ class RestaurantDescription extends StatelessWidget {
   });
 
   final Size size;
-  final Restaurant restaurant;
+  final RestaurantDetailModel restaurant;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class RestaurantDescription extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           width: size.width,
           child: Text(
-            restaurant.description,
+            restaurant.description!,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: Colors.black,
                 ),
